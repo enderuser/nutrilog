@@ -1,2 +1,33 @@
 {% extends 'base.html' %}
 {% block 'title' %}Cadastro{% endblock 'title' %}
+{% block 'body' %}
+<main class="container">
+    <div class="bg-light p-5 rounded mt-3">
+      <h1>Seja Bem-Vindo</h1>
+      <p class="lead">Cadastre aqui a sua conta para acesso ao sistema.</p>
+      <form action='{% url 'cadastro' %}' method='POST'>{% csrf_token %}
+        <div class="mb-3">
+            <label for="formGroupExampleInput" class="form-label">Nome de Usuário</label>
+            <input type="text" class="form-control" name="usuario" id="formGroupExampleInput" placeholder="Nome de Usuário">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email</label>
+          <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <div id="emailHelp" class="form-text">Acesso de uso pessoal e intransferivel.</div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+              <input type="password" name="senha" class="form-control" placeholder="Senha" aria-label="Senha">
+            </div>
+            <div class="col">
+              <input type="password" name="confirmar_senha" class="form-control" placeholder="Confirmar Senha" aria-label="Confirmar Senha">
+            </div>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-lg btn-primary">Registrar</button>
+        <button type="submit" class="btn btn-lg btn-warning">Fazer Login</button>
+       </form>
+    </div>
+</main>
+{% endblock 'body' %}
